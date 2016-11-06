@@ -61,6 +61,7 @@ class Executor(object):
 
     def close(self):
         self.connected = False
+        self.os = None
         self._tn.close()
 
     def __initialize_ios(self):
@@ -68,21 +69,18 @@ class Executor(object):
         self.os = "IOS"
         self._tn.write(b"\x03")
         self._tn.write(b"terminal length 0\r\n")
-        self._tn.read_very_eager()
 
     def __initialize_exos(self):
         self.connected = True
         self.os = "EXOS"
         self._tn.write(b"disable clipaging\r\n")
-        self._tn.read_very_eager()
 
     def __initialize_junos(self):
         self.connected = True
         self.os = "JUNOS"
-        self._tn.read_very_eager()
         self._tn.write(self.eol)
         self._tn.write(b"cli\r\n")
-        self._tn.read_very_eager()
+        self._tn.write(b"set cli screen-length 0\r\n")
 
     def cmd(self, command):
         if self.os == "JUNOS":
