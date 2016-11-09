@@ -11,7 +11,7 @@ Password:
 >>> ex
 Executor (hostname=junos-router,os=JUNOS,connected=True)
 ```
-Executor has one method — cmd, which returns unicode string with the result of the command
+Executor has one main method — cmd, which returns unicode string with the result of the command
 ```
 >>> model = ex.cmd('show version | match Model')
 >>> print(model)
@@ -22,7 +22,21 @@ Model: mx960
 user@junos-router> 
 >>>
 ```
-You should close connection strictly after using
+Also there some little and useful methods.
+
+For example run_and_expect
+```
+>>> e.run_and_expect('show version', ['Cisco IOS', 'Extreme', 'JUNOS'], 5)
+(1,
+ <_sre.SRE_Match object; span=(270, 277), match=b'Extreme'>,
+ b'show version\r\n\rSwitch      : 800399-00-12 1350N-43988 Rev 12.0 BootROM: 2.0.2.1    IMG: 15.5.3.4  \r\nVIM4-40G4X-1: 800402-00-06 1350N-43231 Rev 6.0\r\nPSU-1       : Internal PSU-1 800462-00-04 1337W-80058\r\nPSU-2       : Internal PSU-2 800462-00-04 1337W-80051\r\n\r\nImage   : Extreme')
+```
+Ctrl+C method
+```
+>>> ex.ctrlc()
+```
+
+Important thing — you should close connection strictly after using
 ```
 >>> ex.close()
 ```
