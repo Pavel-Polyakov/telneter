@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name     = 'telneter',
-    version  = '0.0.7',
+    version  = '0.0.8',
     packages = [''],
     description  = 'Telnet interface for popular network devices: JUNOS, EXOS, IOS',
     author       = 'Pavel Polyakov',
