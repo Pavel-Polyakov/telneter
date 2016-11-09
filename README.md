@@ -7,19 +7,19 @@ To start using you can just import Executor and create instance with one paramet
 ```
 >>> from telneter import Executor
 >>> ex = Executor('junos-router')
-... Password: 
+Password: 
 >>> ex
-... Executor (hostname=junos-router,os=JUNOS,connected=True)
+Executor (hostname=junos-router,os=JUNOS,connected=True)
 ```
 Executor has one method — cmd, which returns unicode string with the result of the command
 ```
 >>> model = ex.cmd('show version | match Model')
 >>> print(model)
-... show version | match Model 
-... Model: mx960
-... 
-... {master}
-... user@junos-router> 
+show version | match Model 
+Model: mx960
+
+{master}
+user@junos-router> 
 >>>
 ```
 You should close connection strictly after using
@@ -30,18 +30,18 @@ In previous example Username was got from bash variable and Password was request
 ```
 >>> from telneter import Account
 >>> a = Account()
-... Password: 
+Password: 
 >>> ex = Executor('exos-switch', account=a)
 >>> print(ex.cmd('show version | include Extreme'))
-... show version | include Extreme
-... Image   : ExtremeXOS version 15.5.3.4 v1553b4-patch1-5 by release-manager
-... exos-switch.4 # 
+show version | include Extreme
+Image   : ExtremeXOS version 15.5.3.4 v1553b4-patch1-5 by release-manager
+exos-switch.4 # 
 ```
 To use different username and/or password you can pass it to the constructor of Account object
 ```
 >>> a = Account('user','pass')
 >>> a
-... Account (username='user')
+Account (username='user')
 ```
 
 # Installation
