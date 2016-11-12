@@ -20,7 +20,7 @@ class Executor(object):
     prompt_id_juniper = b"JUNOS"
     prompt_ios = [b".*#$"]
     prompt_exos = [b".*# $"]
-    prompt_junos = [b".*> $", b".*% $"]
+    prompt_junos = [b".*> $", b".*% $", b".*# $"]
     prompt_all = [b".*> $", b".*# $", b".*% $", b".*#$"]
     prompt_failed_login = b"Login incorrect"
 
